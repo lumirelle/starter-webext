@@ -1,12 +1,12 @@
-import { onMessage, sendMessage } from 'webext-bridge/background'
 import type { Tabs } from 'webextension-polyfill'
+import { onMessage, sendMessage } from 'webext-bridge/background'
 
 // only on dev mode
 if (import.meta.hot) {
   // @ts-expect-error for background HMR
-  import('/@vite/client')
+  void import('/@vite/client')
   // load latest content script
-  import('./contentScriptHMR')
+  void import('./contentScriptHMR')
 }
 
 // remove or turn this off if you don't use side panel
@@ -14,14 +14,19 @@ const USE_SIDE_PANEL = true
 
 // to toggle the sidepanel with the action button in chromium:
 if (USE_SIDE_PANEL) {
-  // @ts-expect-error missing types
-  browser.sidePanel
-    .setPanelBehavior({ openPanelOnActionClick: true })
-    .catch((error: unknown) => console.error(error))
+  void (async () => {
+    try {
+      // @ts-expect-error missing types
+      await browser.sidePanel.setPanelBehavior({ openPanelOnActionClick: true })
+    }
+    catch (error) {
+      console.error(error)
+    }
+  })()
 }
 
 browser.runtime.onInstalled.addListener((): void => {
-  // eslint-disable-next-line no-console
+  // oxlint-disable-next-line no-console
   console.log('Extension installed')
 })
 
@@ -45,9 +50,9 @@ browser.tabs.onActivated.addListener(async ({ tabId }) => {
     return
   }
 
-  // eslint-disable-next-line no-console
+  // oxlint-disable-next-line no-console
   console.log('previous tab', tab)
-  sendMessage('tab-prev', { title: tab.title }, { context: 'content-script', tabId })
+  await sendMessage('tab-prev', { title: tab.title }, { context: 'content-script', tabId })
 })
 
 onMessage('get-current-tab', async () => {

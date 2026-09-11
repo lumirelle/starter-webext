@@ -1,12 +1,14 @@
+import type { BrowserContext } from '@playwright/test'
+import type { Manifest } from 'webextension-polyfill'
 import path from 'node:path'
 import { setTimeout as sleep } from 'node:timers/promises'
+import { test as base, chromium } from '@playwright/test'
 import fs from 'fs-extra'
-import { type BrowserContext, test as base, chromium } from '@playwright/test'
-import type { Manifest } from 'webextension-polyfill'
 
-export { name } from '../package.json'
+const rootDir = path.join(import.meta.dirname, '..')
 
-export const extensionPath = path.join(__dirname, '../extension')
+export const name = fs.readJsonSync(path.join(rootDir, 'package.json')).name as string
+export const extensionPath = path.join(rootDir, 'extension')
 
 export const test = base.extend<{
   context: BrowserContext
@@ -16,9 +18,11 @@ export const test = base.extend<{
     // workaround for the Vite server has started but contentScript is not yet.
     await sleep(1000)
     const context = await chromium.launchPersistentContext('', {
+      // the default headless shell does not support extensions; the
+      // `chromium` channel runs new headless, which does.
+      channel: 'chromium',
       headless,
       args: [
-        ...(headless ? ['--headless=new'] : []),
         `--disable-extensions-except=${extensionPath}`,
         `--load-extension=${extensionPath}`,
       ],
@@ -32,7 +36,7 @@ export const test = base.extend<{
     if (!background)
       background = await context.waitForEvent('serviceworker')
 
-    const extensionId = background.url().split('/')[2]
+    const extensionId = new URL(background.url()).host
     await use(extensionId)
   },
 })

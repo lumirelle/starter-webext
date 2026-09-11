@@ -1,7 +1,7 @@
 // generate stub index.html files for dev entry
 import { execSync } from 'node:child_process'
-import fs from 'fs-extra'
 import chokidar from 'chokidar'
+import fs from 'fs-extra'
 import { isDev, log, port, r } from './utils'
 
 /**
@@ -22,16 +22,16 @@ async function stubIndexHtml() {
 }
 
 function writeManifest() {
-  execSync('npx esno ./scripts/manifest.ts', { stdio: 'inherit' })
+  execSync('nub ./scripts/manifest.ts', { stdio: 'inherit' })
 }
 
 writeManifest()
 
 if (isDev) {
-  stubIndexHtml()
+  void stubIndexHtml()
   chokidar.watch(r('src/**/*.html'))
-    .on('change', () => {
-      stubIndexHtml()
+    .on('change', async () => {
+      await stubIndexHtml()
     })
   chokidar.watch([r('src/manifest.ts'), r('package.json')])
     .on('change', () => {

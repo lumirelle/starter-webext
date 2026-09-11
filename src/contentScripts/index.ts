@@ -1,16 +1,17 @@
-/* eslint-disable no-console */
-import { onMessage } from 'webext-bridge/content-script'
 import { createApp } from 'vue'
-import App from './views/App.vue'
+import { onMessage } from 'webext-bridge/content-script'
 import { setupApp } from '~/logic/common-setup'
+import App from './views/App.vue'
 
 // Firefox `browser.tabs.executeScript()` requires scripts return a primitive value
 (() => {
-  console.info('[vitesse-webext] Hello world from content script')
+  // oxlint-disable-next-line no-console
+  console.info(`[${__NAME__}] Hello world from content script`)
 
   // communication example: send previous tab title from background page
   onMessage('tab-prev', ({ data }) => {
-    console.log(`[vitesse-webext] Navigate from page "${data.title}"`)
+    // oxlint-disable-next-line no-console
+    console.log(`[${__NAME__}] Navigate from page "${data.title}"`)
   })
 
   // mount component to context window

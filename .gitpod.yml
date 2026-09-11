@@ -2,18 +2,18 @@ image:
   file: .gitpod.Dockerfile
 
 tasks:
-  - init: pnpm install && pnpm run build
+  - init: mise install && mise run build
     name: dev
     command: |
       gp sync-done ready
-      pnpm run dev
-  - name: pnpm start:chromium
+      mise run dev
+  - name: mise run start
     command: |
       gp sync-await ready
       gp ports await 6080
       gp preview $(gp url 6080)
       sleep 5
-      pnpm start:chromium
+      mise run start
     openMode: split-right
 
 ports:

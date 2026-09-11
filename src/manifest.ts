@@ -1,6 +1,6 @@
-import fs from 'fs-extra'
 import type { Manifest } from 'webextension-polyfill'
 import type PkgType from '../package.json'
+import fs from 'fs-extra'
 import { isDev, isFirefox, port, r } from '../scripts/utils'
 
 export async function getManifest() {
@@ -60,7 +60,7 @@ export async function getManifest() {
     content_security_policy: {
       extension_pages: isDev
         // this is required on dev for Vite script to load
-        ? `script-src \'self\' http://localhost:${port}; object-src \'self\'`
+        ? `script-src 'self' http://localhost:${port}; object-src 'self'`
         : 'script-src \'self\'; object-src \'self\'',
     },
   }
@@ -79,6 +79,7 @@ export async function getManifest() {
   }
 
   // FIXME: not work in MV3
+  // oxlint-disable-next-line no-constant-condition
   if (isDev && false) {
     // for content script, as browsers will cache them for each reload,
     // we use a background script to always inject the latest version

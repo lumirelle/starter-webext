@@ -1,24 +1,7 @@
 {
-  "compilerOptions": {
-    "incremental": false,
-    "target": "es2016",
-    "jsx": "preserve",
-    "lib": ["DOM", "ESNext"],
-    "baseUrl": ".",
-    "module": "ESNext",
-    "moduleResolution": "node",
-    "paths": {
-      "~/*": ["src/*"]
-    },
-    "resolveJsonModule": true,
-    "types": [
-      "vite/client"
-    ],
-    "strict": true,
-    "noUnusedLocals": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true
-  },
-  "exclude": ["dist", "node_modules"]
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ],
+  "files": []
 }

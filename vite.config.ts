@@ -1,16 +1,16 @@
 /// <reference types="vitest" />
 
-import { dirname, relative } from 'node:path'
 import type { UserConfig } from 'vite'
-import { defineConfig } from 'vite'
+import { dirname, relative } from 'node:path'
 import Vue from '@vitejs/plugin-vue'
-import Icons from 'unplugin-icons/vite'
-import IconsResolver from 'unplugin-icons/resolver'
-import Components from 'unplugin-vue-components/vite'
-import AutoImport from 'unplugin-auto-import/vite'
 import UnoCSS from 'unocss/vite'
-import { isDev, port, r } from './scripts/utils'
-import packageJson from './package.json'
+import AutoImport from 'unplugin-auto-import/vite'
+import IconsResolver from 'unplugin-icons/resolver'
+import Icons from 'unplugin-icons/vite'
+import Components from 'unplugin-vue-components/vite'
+import { defineConfig } from 'vite'
+import packageJson from './package.json' with { type: 'json' }
+import { isDev, port, r } from './scripts/utils.ts'
 
 export const sharedConfig: UserConfig = {
   root: r('src'),
@@ -83,11 +83,16 @@ export default defineConfig(({ command }) => ({
   ...sharedConfig,
   base: command === 'serve' ? `http://localhost:${port}/` : '/dist/',
   server: {
+    origin: `http://localhost:${port}`,
     port,
-    hmr: {
+    ws: {
       host: 'localhost',
     },
-    origin: `http://localhost:${port}`,
+  },
+  input: {
+    options: r('src/options/index.html'),
+    popup: r('src/popup/index.html'),
+    sidepanel: r('src/sidepanel/index.html'),
   },
   build: {
     watch: isDev
@@ -96,17 +101,6 @@ export default defineConfig(({ command }) => ({
     outDir: r('extension/dist'),
     emptyOutDir: false,
     sourcemap: isDev ? 'inline' : false,
-    // https://developer.chrome.com/docs/webstore/program_policies/#:~:text=Code%20Readability%20Requirements
-    terserOptions: {
-      mangle: false,
-    },
-    rollupOptions: {
-      input: {
-        options: r('src/options/index.html'),
-        popup: r('src/popup/index.html'),
-        sidepanel: r('src/sidepanel/index.html'),
-      },
-    },
   },
   test: {
     globals: true,

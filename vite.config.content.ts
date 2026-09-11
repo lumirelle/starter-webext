@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite'
-import { sharedConfig } from './vite.config.mjs'
-import { isDev, r } from './scripts/utils'
-import packageJson from './package.json'
+import packageJson from './package.json' with { type: 'json' }
+import { isDev, r } from './scripts/utils.ts'
+import { sharedConfig } from './vite.config.js'
 
 // bundling the content script using Vite
 export default defineConfig({
@@ -26,7 +26,7 @@ export default defineConfig({
       name: packageJson.name,
       formats: ['iife'],
     },
-    rollupOptions: {
+    rolldownOptions: {
       output: {
         entryFileNames: 'index.global.js',
         extend: true,
