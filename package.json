@@ -4,7 +4,7 @@
   "type": "module",
   "version": "0.0.0",
   "private": true,
-  "packageManager": "nub@0.7.5",
+  "packageManager": "nub@0.9.6",
   "description": "_description_",
   "devDependencies": {
     "@antfu/eslint-config": "^9.5.1",
@@ -51,7 +51,7 @@
   "devEngines": {
     "packageManager": {
       "name": "nub",
-      "version": "^0.7.5",
+      "version": "^0.9.6",
       "onFail": "ignore"
     }
   },
