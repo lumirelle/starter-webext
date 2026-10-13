@@ -1,0 +1,39 @@
+{
+  "version": 4,
+  "verify": "start a new terminal (the mise tools were bumped), then run `mise run check`, `mise run test` and `mise run build`",
+  "managers": [
+    {
+      "name": "mise",
+      "kind": "toolchain",
+      "detect": ["mise.toml", "mise.lock"],
+      "note": "project-scoped: --local keeps this off the machine-global config",
+      "commands": {
+        "check": "mise outdated --local --json",
+        "bump": {
+          "default": "mise upgrade --local",
+          "major": "mise upgrade --local --bump"
+        }
+      }
+    },
+    {
+      "name": "nub",
+      "kind": "package",
+      "detect": ["nub.lock", "packageManager=nub"],
+      "note": "taze declared in devDependencies, so the Node lane is available",
+      "commands": {
+        "check": "nub outdated --json",
+        "bump": {
+          "default": "nub exec taze -x nub -w --no-interactive --no-node-version --no-github-actions --request-timeout 60000 --concurrency 4",
+          "patch": "nub exec taze patch -x nub -w --no-interactive --no-node-version --no-github-actions --request-timeout 60000 --concurrency 4",
+          "minor": "nub exec taze minor -x nub -w --no-interactive --no-node-version --no-github-actions --request-timeout 60000 --concurrency 4",
+          "major": "nub exec taze major -x nub -w --no-interactive --no-node-version --no-github-actions --request-timeout 60000 --concurrency 4"
+        },
+        "refresh": [
+          "node --input-type=commonjs -e \"require('fs').rmSync('node_modules',{recursive:true,force:true})\"",
+          "nub install",
+          "nub dedupe"
+        ]
+      }
+    }
+  ]
+}
