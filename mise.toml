@@ -6,7 +6,7 @@ node = "latest"
 "github:nubjs/nub" = "latest"
 # Linters & Formatters
 # pinned to match the `amends` version in hk.pkl
-hk = "2.5.0"
+hk = "2.6.0"
 stylua = "latest"
 pkl = "latest"
 
