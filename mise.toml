@@ -3,10 +3,9 @@
 [tools]
 # Environments
 node = "latest"
-"github:nubjs/nub" = "latest"
+nub = "latest"
 # Linters & Formatters
-# pinned to match the `amends` version in hk.pkl
-hk = "2.6.0"
+hk = "latest"
 stylua = "latest"
 pkl = "latest"
 
