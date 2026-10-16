@@ -1,5 +1,5 @@
 {
-  "version": 4,
+  "version": 5,
   "verify": "start a new terminal (the mise tools were bumped), then run `mise run check`, `mise run test` and `mise run build`",
   "managers": [
     {
@@ -19,7 +19,7 @@
       "name": "nub",
       "kind": "package",
       "detect": ["nub.lock", "packageManager=nub"],
-      "note": "taze declared in devDependencies, so the Node lane is available",
+      "note": "taze declared in devDependencies, so the Node lane is available; --request-timeout/--concurrency are project fixes carried over from the previous config",
       "commands": {
         "check": "nub outdated --json",
         "bump": {
@@ -29,7 +29,7 @@
           "major": "nub exec taze major -x nub -w --no-interactive --no-node-version --no-github-actions --request-timeout 60000 --concurrency 4"
         },
         "refresh": [
-          "node --input-type=commonjs -e \"require('fs').rmSync('node_modules',{recursive:true,force:true})\"",
+          "node --input-type=commonjs -e \"const fs=require('fs');for(const p of ['node_modules','nub.lock'])fs.rmSync(p,{recursive:true,force:true})\"",
           "nub install",
           "nub dedupe"
         ]
