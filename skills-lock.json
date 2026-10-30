@@ -1,0 +1,197 @@
+{
+  "version": 1,
+  "skills": {
+    "ask-matt": {
+      "source": "lumirelle/skills",
+      "sourceType": "github",
+      "skillPath": "skills/starting/ask-matt/SKILL.md",
+      "computedHash": "1d4a4372a7e2a83fe5d73210644180e5e4feff0ba01b7a108d10646c37e8b75f"
+    },
+    "code-review": {
+      "source": "lumirelle/skills",
+      "sourceType": "github",
+      "skillPath": "skills/building/code-review/SKILL.md",
+      "computedHash": "64a30a0fa8fa9ca29d7ae6a8e621903b1384afa90adc0b8277a82a14380059a1"
+    },
+    "codebase-design": {
+      "source": "lumirelle/skills",
+      "sourceType": "github",
+      "skillPath": "skills/reference/codebase-design/SKILL.md",
+      "computedHash": "ca13698a4dd5938e2e769d626a94468125e4afbf84eabffed8f32c561522f298"
+    },
+    "diagnosing-bugs": {
+      "source": "lumirelle/skills",
+      "sourceType": "github",
+      "skillPath": "skills/maintaining/diagnosing-bugs/SKILL.md",
+      "computedHash": "65aa85d9491055eeeb87c58acb49ddf27f61af59ee6b59f20f928a6ec04f5df7"
+    },
+    "domain-modeling": {
+      "source": "lumirelle/skills",
+      "sourceType": "github",
+      "skillPath": "skills/reference/domain-modeling/SKILL.md",
+      "computedHash": "4549d334f1a17759b37c6c10071685cfc496658663b5d7fdab697c353c4fbc95"
+    },
+    "grill-with-docs": {
+      "source": "lumirelle/skills",
+      "sourceType": "github",
+      "skillPath": "skills/shaping/grill-with-docs/SKILL.md",
+      "computedHash": "4d63ca9227507a01a199d5372148f6fc424fca86ea53df8788f25faef569377e"
+    },
+    "grilling": {
+      "source": "lumirelle/skills",
+      "sourceType": "github",
+      "skillPath": "skills/reference/grilling/SKILL.md",
+      "computedHash": "2849d687e25edca6189221c8557de44916daff93f4e7e127b0a9d8062f7eede9"
+    },
+    "handoff": {
+      "source": "lumirelle/skills",
+      "sourceType": "github",
+      "skillPath": "skills/maintaining/handoff/SKILL.md",
+      "computedHash": "d4b478fd4a5a33550147082181c1cd9fc9beb2520187c31093f2b6e3b6dddb03"
+    },
+    "implement": {
+      "source": "lumirelle/skills",
+      "sourceType": "github",
+      "skillPath": "skills/building/implement/SKILL.md",
+      "computedHash": "79bcd6d43aeceeafd7d35413b96da594cdd44f8540a30f8b04aa7e38d36cd075"
+    },
+    "implement-spec": {
+      "source": "lumirelle/skills",
+      "sourceType": "github",
+      "skillPath": "skills/building/implement-spec/SKILL.md",
+      "computedHash": "f619ce0e21152bd7c963493ca0ad9b32d2054cdffeee2b18b4f4d34e0efd6d90"
+    },
+    "improve-codebase-architecture": {
+      "source": "lumirelle/skills",
+      "sourceType": "github",
+      "skillPath": "skills/maintaining/improve-codebase-architecture/SKILL.md",
+      "computedHash": "1fd1dac71a4d0123e9e7c1136658bd10eee48c03da0e998912a3e0a98a59e932"
+    },
+    "justbump": {
+      "source": "lumirelle/skills",
+      "sourceType": "github",
+      "skillPath": "skills/maintaining/justbump/SKILL.md",
+      "computedHash": "4826d06300cdd8de818b976964472659afe3621b77292ab35411a4db809ad99e"
+    },
+    "mcp-builder": {
+      "source": "lumirelle/skills",
+      "sourceType": "github",
+      "skillPath": "skills/building/mcp-builder/SKILL.md",
+      "computedHash": "93a9b18be678508195c212c59bd373c1e301bc6371ac651e53924ed95f716856"
+    },
+    "migrate-to-shoehorn": {
+      "source": "lumirelle/skills",
+      "sourceType": "github",
+      "skillPath": "skills/maintaining/migrate-to-shoehorn/SKILL.md",
+      "computedHash": "35ee7c5b4bf75a9f6e7e5e883f6bd6dba9a6541b0980f086cc1b48bac026b918"
+    },
+    "mise": {
+      "source": "lumirelle/skills",
+      "sourceType": "github",
+      "skillPath": "skills/toolchain/mise/SKILL.md",
+      "computedHash": "6b83c0d419f51c9bc0c376858084f4b5172f0771b4731b572a540a220764faaa"
+    },
+    "pr": {
+      "source": "lumirelle/skills",
+      "sourceType": "github",
+      "skillPath": "skills/restraining/pr/SKILL.md",
+      "computedHash": "e6d04454839dbc7c012ae03efc48155f1ea3516ec26f6a332441ec6734ae25b9"
+    },
+    "prototype": {
+      "source": "lumirelle/skills",
+      "sourceType": "github",
+      "skillPath": "skills/shaping/prototype/SKILL.md",
+      "computedHash": "b397610938be45ff23ba7fda000d89d6ab6f8257b58fb5d2c330b08b9aff6807"
+    },
+    "research": {
+      "source": "lumirelle/skills",
+      "sourceType": "github",
+      "skillPath": "skills/shaping/research/SKILL.md",
+      "computedHash": "b9f3f207de752ae52813f46c8711956681d2d007a83d83f5c463a9bb9a13c63a"
+    },
+    "retro": {
+      "source": "lumirelle/skills",
+      "sourceType": "github",
+      "skillPath": "skills/maintaining/retro/SKILL.md",
+      "computedHash": "74bb6d0addaab1ffb6f0fa689331d2094a5e721a5feaa018673c5e1df7c96a4b"
+    },
+    "setup-matt-pocock-skills": {
+      "source": "lumirelle/skills",
+      "sourceType": "github",
+      "skillPath": "skills/starting/setup-matt-pocock-skills/SKILL.md",
+      "computedHash": "57e487867176e9c041df14d8d241851b90de88c1d2272afe342feb56c3146aff"
+    },
+    "skill-creator": {
+      "source": "lumirelle/skills",
+      "sourceType": "github",
+      "skillPath": "skills/building/skill-creator/SKILL.md",
+      "computedHash": "e8a79827df2d9dd4b6e2c75e888e6c8763e08f36bb288284aaf5fe0a58463ddf"
+    },
+    "tdd": {
+      "source": "lumirelle/skills",
+      "sourceType": "github",
+      "skillPath": "skills/reference/tdd/SKILL.md",
+      "computedHash": "01847a45954c9b823ba54892c1283096af64ee23083d79e0ad79ea7d086598aa"
+    },
+    "to-questionnaire": {
+      "source": "lumirelle/skills",
+      "sourceType": "github",
+      "skillPath": "skills/shaping/to-questionnaire/SKILL.md",
+      "computedHash": "791513b21806ff6608b8b98d844aff48058ef9f9f186fadcd97a3c0deee81881"
+    },
+    "to-spec": {
+      "source": "lumirelle/skills",
+      "sourceType": "github",
+      "skillPath": "skills/building/to-spec/SKILL.md",
+      "computedHash": "a7e88d677c0f39f6473bf39952b1441f0d8e3ea526fec99bd82839ebee01c885"
+    },
+    "to-tickets": {
+      "source": "lumirelle/skills",
+      "sourceType": "github",
+      "skillPath": "skills/building/to-tickets/SKILL.md",
+      "computedHash": "062ffff4edc83b2a99676ae6ce9e98381a7dc01d38e201d4def012204e69619c"
+    },
+    "triage": {
+      "source": "lumirelle/skills",
+      "sourceType": "github",
+      "skillPath": "skills/maintaining/triage/SKILL.md",
+      "computedHash": "55b754223a8509e82f7af4fe5e9d6300c0609a33d2c96f3c87d5b664b623edcf"
+    },
+    "wait-what": {
+      "source": "lumirelle/skills",
+      "sourceType": "github",
+      "skillPath": "skills/shaping/wait-what/SKILL.md",
+      "computedHash": "93179d927d395ef84002c669783825af654303940c60e9c3efc12209b2c03b10"
+    },
+    "wayfinder": {
+      "source": "lumirelle/skills",
+      "sourceType": "github",
+      "skillPath": "skills/shaping/wayfinder/SKILL.md",
+      "computedHash": "c7a5ca749b136cd0446e675f9d491ec8a583aa0a881aa47115b7b899b58046ed"
+    },
+    "web-design-guidelines": {
+      "source": "lumirelle/skills",
+      "sourceType": "github",
+      "skillPath": "skills/shaping/web-design-guidelines/SKILL.md",
+      "computedHash": "aa1029be674ad4d66c21d17cd29fec9b64536cad92ff61f81e341a92794186e9"
+    },
+    "wizard": {
+      "source": "lumirelle/skills",
+      "sourceType": "github",
+      "skillPath": "skills/building/wizard/SKILL.md",
+      "computedHash": "52168908fb93c2008f319332a617aed49194e73e4e9468aaf42bc973a5e02f0e"
+    },
+    "worktrunk": {
+      "source": "lumirelle/skills",
+      "sourceType": "github",
+      "skillPath": "skills/toolchain/worktrunk/SKILL.md",
+      "computedHash": "5c625cb1c6bf834c5ffef12d268ab2ad2c8fe23ae712517d40b30b575ad059a5"
+    },
+    "writing-for-agents": {
+      "source": "lumirelle/skills",
+      "sourceType": "github",
+      "skillPath": "skills/building/writing-for-agents/SKILL.md",
+      "computedHash": "aa80448b79f1c688a11ce1d965a483977c8fd5a53198d3af2678f82375d47664"
+    }
+  }
+}
