@@ -12,14 +12,18 @@ if (import.meta.hot) {
 // remove or turn this off if you don't use side panel
 const USE_SIDE_PANEL = true
 
+// Chromium's `sidePanel` is not part of the polyfill's Firefox-oriented types.
+interface SidePanelApi {
+  setPanelBehavior: (options: { openPanelOnActionClick: boolean }) => Promise<void>
+}
+
 // to toggle the sidepanel with the action button in chromium:
 if (USE_SIDE_PANEL) {
   void (async () => {
     try {
-      // @ts-expect-error missing types
-      await browser.sidePanel.setPanelBehavior({ openPanelOnActionClick: true })
-    }
-    catch (error) {
+      const { sidePanel } = browser as typeof browser & { sidePanel: SidePanelApi }
+      await sidePanel.setPanelBehavior({ openPanelOnActionClick: true })
+    } catch (error) {
       console.error(error)
     }
   })()
@@ -34,7 +38,7 @@ let previousTabId = 0
 
 // communication example: send previous tab title from background page
 // see shim.d.ts for type declaration
-browser.tabs.onActivated.addListener(async ({ tabId }) => {
+async function notifyPreviousTab({ tabId }: Tabs.OnActivatedActiveInfoType) {
   if (!previousTabId) {
     previousTabId = tabId
     return
@@ -45,14 +49,18 @@ browser.tabs.onActivated.addListener(async ({ tabId }) => {
   try {
     tab = await browser.tabs.get(previousTabId)
     previousTabId = tabId
-  }
-  catch {
+  } catch {
     return
   }
 
   // oxlint-disable-next-line no-console
   console.log('previous tab', tab)
   await sendMessage('tab-prev', { title: tab.title }, { context: 'content-script', tabId })
+}
+
+// The listener itself must stay synchronous; the handler's promise is detached.
+browser.tabs.onActivated.addListener(activeInfo => {
+  void notifyPreviousTab(activeInfo)
 })
 
 onMessage('get-current-tab', async () => {
@@ -61,8 +69,7 @@ onMessage('get-current-tab', async () => {
     return {
       title: tab?.title,
     }
-  }
-  catch {
+  } catch {
     return {
       title: undefined,
     }
