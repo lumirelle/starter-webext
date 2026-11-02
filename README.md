@@ -49,8 +49,8 @@ A [Vite](https://vitejs.dev/) powered WebExtension ([Chrome](https://developer.c
 ### Coding Style
 
 - Use Composition API with [`<script setup>` SFC syntax](https://github.com/vuejs/rfcs/pull/227)
-- [ESLint](https://eslint.org/) with [@antfu/eslint-config](https://github.com/antfu/eslint-config), single quotes, no semi
-- [oxlint](https://oxc.rs/) type-aware rules via [@lumirelle/oxlint-config](https://github.com/lumirelle/oxlint-config)
+- [ESLint](https://eslint.org/) and [oxlint](https://oxc.rs/) with [@lumirelle/linter-config](https://github.com/lumirelle/linter-config) type-aware rules
+- [oxfmt](https://oxc.rs/docs/guide/usage/formatter) formatting, single quotes, no semi
 
 ### Dev tools
 
@@ -132,7 +132,7 @@ You can upload `extension.crx` or `extension.xpi` to the appropriate extension s
 ### Checks and tests
 
 ```bash
-mise run check      # oxlint, tsc, eslint, stylua and pkl
+mise run check      # oxlint, tsc, eslint, oxfmt, stylua and pkl
 mise run fix        # auto-fix everything that can be fixed
 mise run test       # unit tests with Vitest
 mise run test:e2e   # end-to-end tests with Playwright

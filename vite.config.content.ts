@@ -14,9 +14,7 @@ export default defineConfig({
     'process.env.NODE_ENV': JSON.stringify(isDev ? 'development' : 'production'),
   },
   build: {
-    watch: isDev
-      ? {}
-      : undefined,
+    watch: isDev ? {} : undefined,
     outDir: r('extension/dist/contentScripts'),
     cssCodeSplit: false,
     emptyOutDir: false,

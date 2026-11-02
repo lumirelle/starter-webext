@@ -4,7 +4,7 @@ import { setupApp } from '~/logic/common-setup'
 import App from './views/App.vue'
 
 // Firefox `browser.tabs.executeScript()` requires scripts return a primitive value
-(() => {
+;(() => {
   // oxlint-disable-next-line no-console
   console.info(`[${__NAME__}] Hello world from content script`)
 
@@ -19,7 +19,7 @@ import App from './views/App.vue'
   container.id = __NAME__
   const root = document.createElement('div')
   const styleEl = document.createElement('link')
-  const shadowDOM = container.attachShadow?.({ mode: __DEV__ ? 'open' : 'closed' }) || container
+  const shadowDOM = container.attachShadow?.({ mode: __DEV__ ? 'open' : 'closed' }) ?? container
   styleEl.setAttribute('rel', 'stylesheet')
   styleEl.setAttribute('href', browser.runtime.getURL('dist/contentScripts/style.css'))
   shadowDOM.appendChild(styleEl)
