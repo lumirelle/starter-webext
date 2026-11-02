@@ -19,13 +19,6 @@ auto = true
 [env]
 _.path = ['{{config_root}}/node_modules/.bin']
 
-[task_config.input_groups]
-deps = ["package.json", "nub.lock"]
-src = ["src"]
-build = ["scripts", "vite.config*.ts", "unocss.config.ts", "tsconfig*.json"]
-check = ["*.js", "*.mjs", "*.cjs", "*.jsx", "*.ts", "*.mts", "*.cts", "*.tsx", "*.json", "*.jsonc", "*.yaml", "*.yml", "*.toml", "*.md", "*.mdc", "*.mdx", "*.lua", "hk.pkl"]
-e2e = ["e2e", "playwright.config.ts"]
-
 [tasks.clear]
 description = "Clear dist files."
 run = "rm -rf extension/dist extension/manifest.json extension.*"
@@ -62,10 +55,6 @@ run = [
   { task = "build:background", env = { NODE_ENV = "production", EXTENSION = "{{ usage.browser }}" } },
   { task = "build:js", env = { NODE_ENV = "production", EXTENSION = "{{ usage.browser }}" } },
 ]
-# https://github.com/jdx/mise/pull/13051
-# sources = ["@group:deps", "@group:src", "@group:build"]
-# outputs = ["extension/dist", "extension/manifest.json"]
-# cache = { enabled = true }
 
 [tasks."build:prepare"]
 run = "nub scripts/prepare.ts"
@@ -115,9 +104,6 @@ arg "[rest]" var=#true help="Additional arguments to pass to the test runner"
 run = '''
 hk check {{ "--staged" if usage.staged else "--all" }} {{ usage.rest | join(sep=' ') if usage.rest else '' }}
 '''
-sources = ["@group:deps", "@group:check"]
-outputs = []
-cache = { enabled = true, command_inputs = ["hk --version"] }
 
 [tasks.fix]
 description = 'Fix all check issues.'
@@ -128,9 +114,6 @@ arg "[rest]" var=#true help="Additional arguments to pass to the test runner"
 run = '''
 hk fix {{ "--staged" if usage.staged else "--all" }} {{ usage.rest | join(sep=' ') if usage.rest else '' }}
 '''
-sources = ["@group:deps", "@group:check"]
-outputs = []
-cache = { enabled = true, command_inputs = ["hk --version"] }
 
 [tasks.test]
 description = "Run unit tests."
@@ -141,9 +124,6 @@ arg "[rest]" var=#true help="Additional arguments to pass to the test runner"
 run = '''
 vitest {{ '' if usage.watch else 'run' }} {{ usage.rest | join(sep=' ') if usage.rest else '' }}
 '''
-sources = ["@group:deps", "@group:src"]
-outputs = []
-cache = { enabled = true, command_inputs = ["node --version"] }
 
 [tasks."test:e2e"]
 description = "Run end-to-end tests with Playwright."
@@ -153,5 +133,3 @@ arg "[rest]" var=#true help="Additional arguments to pass to Playwright"
 run = '''
 playwright test {{ usage.rest | join(sep=' ') if usage.rest else '' }}
 '''
-sources = ["@group:deps", "@group:src", "@group:build", "@group:e2e"]
-outputs = []
